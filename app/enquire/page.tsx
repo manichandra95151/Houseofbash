@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -94,11 +95,11 @@ export default function EnquirePage() {
         <section className="max-w-[1280px] mx-auto px-6 md:px-8 text-center mb-16">
           <ScrollReveal>
             <span className="font-body text-[11px] tracking-[0.3em] font-bold text-secondary mb-4 block uppercase">
-              Let's Get the Party Started
+              Let&apos;s Get the Party Started
             </span>
             <h1 className="font-display text-4xl md:text-[56px] lg:text-[64px] text-primary mb-6">Begin Your Journey</h1>
             <p className="font-body text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
-              Fill in your details below and our team will reach out within 24 hours to lock in your celebration. It's that easy.
+              Fill in your details below and our team will reach out within 24 hours to lock in your celebration. It&apos;s that easy.
             </p>
             <div className="w-[100px] h-px bg-secondary mx-auto mt-8" />
           </ScrollReveal>
@@ -117,7 +118,7 @@ export default function EnquirePage() {
                       <span className="material-symbols-outlined text-secondary text-6xl mb-6 block">check_circle</span>
                       <h3 className="font-display text-3xl text-primary mb-4">Enquiry Received!</h3>
                       <p className="font-body text-on-surface-variant mb-2 text-base leading-relaxed">
-                        Thank you! We've sent a confirmation to your email.
+                        Thank you! We&apos;ve sent a confirmation to your email.
                       </p>
                       <p className="font-body text-on-surface-variant mb-10 text-base">
                         Our team will call or WhatsApp you within <strong>24 hours</strong> to confirm your booking.
@@ -334,10 +335,12 @@ export default function EnquirePage() {
               <ScrollReveal direction="right">
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-[4/5] border border-primary/5 group">
-                  <img
+                  <Image
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNQ5HsfeJVy6raHFyOtmT01PIP63Q_fIup9eTn61n-_DEUWFaxJQgT-9bUOYw3VKe8XagpWMjdHa6x_pmclnaZlegPQk-OqSjSEPGFxLIi-hNcI3zJ911mK1EIZPRw-dNPdzz6ODcmZDMKyHGHYTcVOce4xqI9lIXE6_vmzEto5kmnvzO8zIeZkXbMXy0pEwT_e3fwrlRl3xAZphe-sDbNHp-dRqpiRptv92oo6GdYk3AyzlEEUj25QWMewcutq13qlBeSVWKONAQ6"
                     alt="Luxury event decor"
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   <div className="absolute inset-0 bg-primary/20 flex flex-col justify-end p-8 text-white">
                     <h3 className="font-display text-2xl mb-2">Quick Turnaround</h3>

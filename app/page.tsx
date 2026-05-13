@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -109,10 +110,13 @@ export default function HomePage() {
           className="relative h-screen min-h-[600px] max-h-[960px] flex items-center overflow-hidden"
         >
           <div className="absolute inset-0 z-0">
-            <img
+            <Image
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOBwkWKHjfAlMLXRDBfj8s8XnrSYPQ_MP-ipm5OD1jsO_VedR4eJ13Z-yWm-Orv47-gHrihJiw7XwzK_M2UGt0VtCbxgVG6ZJ9SQ2HDSZDTBP6UnuA1oObTpVqDcS4juSGPFw6BSS_waSlblTimzm-D5d42k1VmMhFGBeNpwoJNcUBiUgb1hHDyzHSipTZ1cTWRvfxTD5NS6tOqQEBwnF-26pPLmAifzfdLklrDBNLA5o8_kT0eM829ASkzfVEwlN72oNdi1g5Y33m"
               alt="Private theatre celebration"
               className="hero-img w-full h-[130%] object-cover object-center -top-[15%] absolute"
+              fill
+              sizes="100vw"
+              priority
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/60 to-primary/20" />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent" />
@@ -201,7 +205,7 @@ export default function HomePage() {
               <h2 className="font-display text-3xl md:text-[36px] text-primary mb-4">Every Occasion, On the Big Screen</h2>
               <div className="h-px w-[100px] bg-secondary mx-auto mb-6" />
               <p className="font-body text-base text-on-surface-variant max-w-xl mx-auto">
-                Whatever you're celebrating, we've got the perfect setup. Fully decorated, fully private, fully awesome.
+                Whatever you&apos;re celebrating, we&apos;ve got the perfect setup. Fully decorated, fully private, fully awesome.
               </p>
             </ScrollReveal>
 
@@ -210,10 +214,12 @@ export default function HomePage() {
                 <ScrollReveal key={occ.title} delay={i * 100}>
                   <div className="group cursor-pointer overflow-hidden rounded-sm border border-primary/8 bg-white p-6 md:p-7 text-center hover:border-secondary/50 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(9,20,38,0.08)]">
                     <div className="mb-5 overflow-hidden rounded-sm">
-                      <img
+                      <Image
                         src={occ.img}
                         alt={occ.title}
                         className="w-full h-48 object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                        width={400}
+                        height={192}
                       />
                     </div>
                     <h3 className="font-display text-xl md:text-2xl text-primary mb-2">{occ.title}</h3>
@@ -301,10 +307,12 @@ export default function HomePage() {
               <div className="lg:w-1/2 relative w-full">
                 <ScrollReveal direction="right">
                   <div className="aspect-[4/5] overflow-hidden rounded-sm relative shadow-2xl">
-                    <img
+                    <Image
                       src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb6ztVcAMVQ7gVzZD-RLjooFc63QK4tCDfwQsV4YJx88eDkE_h6QwDGZ6WuafdT6efl-BzZEys3mCO2-f9T0sVk_MBqUb49BjFOLMRn1CpbZN_LDpeuBABPAKWTKGe5nyMskzvN1THWF-YlrRQIT4We-QQuH3JPzCKXeSm3XevSmWWAfJf5Q-MFkAkGweIWXNmSw7HR98r9cEatvrWBZyNtGjdDfxPv_I_WROu52A4sDB3FU-kb5SMz2sn51FwfzzqD8NSaQVVIAh7"
                       alt="Theatre event setup"
                       className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                   </div>
                   <div className="absolute -bottom-6 -left-4 bg-secondary p-7 md:p-10 hidden lg:block shadow-xl">
@@ -331,7 +339,7 @@ export default function HomePage() {
               {testimonials.map((t, i) => (
                 <ScrollReveal key={t.name} delay={i * 150}>
                   <div className="bg-surface-container-low p-8 relative group hover:shadow-md transition-shadow duration-300">
-                    <div className="font-display text-6xl text-secondary/20 leading-none absolute top-4 left-6 select-none">"</div>
+                    <div className="font-display text-6xl text-secondary/20 leading-none absolute top-4 left-6 select-none">&ldquo;</div>
                     <p className="font-body text-base text-on-surface-variant mb-6 leading-relaxed pt-6 relative z-10">{t.quote}</p>
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-px bg-secondary" />

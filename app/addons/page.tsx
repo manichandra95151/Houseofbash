@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -188,31 +189,32 @@ export default function AddonsPage() {
 
             {/* Cakes */}
             <ScrollReveal className="md:col-span-12">
-              <div className="border border-primary/5 bg-surface-container-low p-8 md:p-10 flex flex-col md:flex-row items-center gap-10">
+              <div className="bg-[#f0f7ff] p-8 md:p-14 flex flex-col md:flex-row items-center gap-12 md:gap-20 border border-primary/5">
                 <div className="flex-1">
-                  <h3 className="font-display text-2xl md:text-[28px] text-primary mb-4">Artisanal Cakes</h3>
-                  <p className="text-on-surface-variant mb-8 font-body">
+                  <h3 className="font-display text-3xl md:text-[42px] text-primary mb-5">Artisanal Cakes</h3>
+                  <p className="text-on-surface-variant mb-12 font-body text-base max-w-lg">
                     Bespoke confectionery crafted by master patisseries. Available in select signature flavors.
                   </p>
-                  <div className="flex flex-wrap gap-6 md:gap-8">
+                  
+                  <div className="flex flex-col sm:flex-row gap-12 md:gap-16">
                     {[
                       { label: '0.5 KG SELECTION', price: 650, name: 'Artisanal Cake (0.5 KG)' },
                       { label: '1.0 KG SELECTION', price: 1000, name: 'Artisanal Cake (1.0 KG)' },
-                    ].map((cake) => (
-                      <div
-                        key={cake.name}
-                        onClick={() => toggleItem({ name: cake.name, price: cake.price })}
-                        className={`cursor-pointer flex flex-col items-start gap-4 p-4 border transition-all duration-300 ${
-                          isSelected(cake.name) ? 'item-selected' : 'border-transparent hover:border-secondary/20'
-                        }`}
+                    ].map((cake, idx) => (
+                      <div 
+                        key={cake.name} 
+                        className={`flex-1 flex flex-col items-start gap-6 ${idx === 0 ? 'sm:border-r border-primary/10 sm:pr-16' : ''}`}
                       >
                         <div>
-                          <span className="font-body text-[11px] tracking-[0.15em] font-bold text-secondary uppercase">{cake.label}</span>
-                          <span className="text-2xl font-display text-primary block">₹{cake.price.toLocaleString()}</span>
+                          <span className="font-body text-[11px] tracking-[0.15em] font-bold text-secondary uppercase block mb-1">{cake.label}</span>
+                          <span className="text-3xl font-display text-primary block">₹{cake.price.toLocaleString()}</span>
                         </div>
                         <button
-                          className={`px-4 py-2 font-body text-[10px] tracking-widest font-bold uppercase transition-all duration-300 ${
-                            isSelected(cake.name) ? 'bg-secondary text-white' : 'bg-primary text-white hover:bg-secondary'
+                          onClick={() => toggleItem({ name: cake.name, price: cake.price })}
+                          className={`px-8 py-2.5 font-body text-[11px] tracking-widest font-bold uppercase transition-all duration-300 ${
+                            isSelected(cake.name) 
+                              ? 'bg-secondary text-white' 
+                              : 'bg-primary text-white hover:bg-secondary'
                           }`}
                         >
                           {isSelected(cake.name) ? '✓ Added' : 'Add'}
@@ -221,11 +223,14 @@ export default function AddonsPage() {
                     ))}
                   </div>
                 </div>
-                <div className="w-full md:w-64 aspect-square overflow-hidden">
-                  <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbvP66k2fPltle9QTchm2QTp4vhVRXkAya__sna7tQ96LCs2sBgJ94U41CDoU5O2qwR2pP8L91zycwMBZ5M2BZtMCa3GWG5u0LMuEAF-GUqPatUfUXVhPC9HQvgi1lhIbKSQJzKgBJnUYqywHZlr9GwPu9pjN2zom0sAJf2_Dl2kFpruTZHnUAseP7RrCrpahSdr2CBUq7F4KLHKbKD8f9gFWUHI9wQFkqBSaCehaWKAXgQVBFex2yKbUctiUnnRyx4qupqVk_mfIG"
+                
+                <div className="w-full md:w-[420px] aspect-[4/3] relative overflow-hidden shadow-xl rounded-sm">
+                  <Image
+                    src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?auto=format&fit=crop&q=80&w=800"
                     alt="Artisanal Cake"
-                    className="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 420px"
                   />
                 </div>
               </div>
@@ -300,10 +305,12 @@ export default function AddonsPage() {
                   }`}
                 >
                   <div className="h-56 md:h-64 bg-primary/10 overflow-hidden relative">
-                    <img
+                    <Image
                       src={food.img}
                       alt={food.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                       <button className="bg-white text-primary px-6 py-2 font-body text-[11px] tracking-widest font-bold uppercase">

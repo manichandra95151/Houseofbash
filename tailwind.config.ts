@@ -43,8 +43,8 @@ const config: Config = {
         'on-error': '#ffffff',
       },
       fontFamily: {
-        display: ['Playfair Display', 'serif'],
-        body: ['Manrope', 'sans-serif'],
+        display: ['var(--font-playfair)', 'Playfair Display', 'serif'],
+        body: ['var(--font-manrope)', 'Manrope', 'sans-serif'],
       },
       fontSize: {
         'display-lg': ['48px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],

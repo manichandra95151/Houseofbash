@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Manrope:wght@400;500;600;700;800&display=swap');
-
 :root {
   --primary: #091426;
   --secondary: #775a19;
@@ -20,7 +18,7 @@ html {
 }
 
 body {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
   background-color: var(--surface);
   color: var(--primary);
   overflow-x: hidden;
@@ -43,11 +41,11 @@ body {
 
 /* Utility classes */
 .font-display {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
 }
 
 .font-body {
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
 }
 
 /* Scroll-triggered animations */
@@ -125,6 +123,7 @@ body {
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shimmer 3s linear infinite;
 }
@@ -151,7 +150,7 @@ body {
   background: transparent;
   padding: 12px 0;
   width: 100%;
-  font-family: 'Manrope', sans-serif;
+  font-family: var(--font-manrope), 'Manrope', sans-serif;
   font-size: 16px;
   color: #091426;
   transition: border-color 0.3s ease;

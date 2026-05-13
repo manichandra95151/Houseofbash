@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
@@ -135,10 +136,12 @@ export default function GalleryPage() {
                   className={item.span || ''}
                 >
                   <div className="relative overflow-hidden group h-full bg-primary-container cursor-pointer">
-                    <img
+                    <Image
                       src={item.img}
                       alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
                     <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
@@ -175,10 +178,12 @@ export default function GalleryPage() {
           <div className="max-w-[1280px] mx-auto px-6 md:px-8">
             <ScrollReveal>
               <div className="relative aspect-video max-w-5xl mx-auto bg-primary-container overflow-hidden rounded-lg group shadow-2xl">
-                <img
+                <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiUEyxQAmfbZot7fKRXJNR00hjcl_5YlzFvtGrhZ4bLvpNcSxZuW0Sd2cuof8UYY0XHem8UuwBd0PHrsiKzePzPYMT14EymdCPR6d0ei_BD7GFbeTDw9frhXA9Q5hhbLBYR-i59rVQ9TDoX7GlrWr_y0p_4fe_AZ4jJo7gQsn_s6uvozCmatI2tAKsp4azf5lv2yvH1YOyuk-nkRWFTdf3mHIWzh3Sf2zR5H2ac38ZsQUWfVv0LaM3PDbYEdZHSbIKwk2FMyUjS0WG"
                   alt="Cinematic archive"
                   className="w-full h-full object-cover opacity-60"
+                  fill
+                  sizes="(max-width: 1280px) 100vw, 1024px"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <button className="w-20 h-20 rounded-full border border-secondary flex items-center justify-center group-hover:scale-110 group-hover:bg-secondary/10 transition-all duration-500">
@@ -229,10 +234,12 @@ export default function GalleryPage() {
                 <ScrollReveal key={col.category} delay={i * 120} className={col.offset}>
                   <div className="space-y-5">
                     <div className="aspect-[4/5] bg-surface-container overflow-hidden border border-primary/5">
-                      <img
+                      <Image
                         src={col.img}
                         alt={col.category}
                         className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
                       />
                     </div>
                     <h3 className="font-display text-xl text-primary">{col.category}</h3>
