@@ -245,18 +245,22 @@ export default function HomePage() {
 
         {/* ── MARQUEE ── */}
         <div className="bg-secondary py-4 overflow-hidden">
-          <div className="marquee-track flex gap-8 whitespace-nowrap">
-            {Array(8).fill(null).map((_, i) => (
-              <span key={i} className="font-body text-[11px] tracking-[0.25em] font-bold text-white/80 uppercase flex items-center gap-8">
-                Private Theatre Sangareddy
-                <span className="text-white/40">◆</span>
-                Birthday Celebrations
-                <span className="text-white/40">◆</span>
-                Anniversaries
-                <span className="text-white/40">◆</span>
-                Bride to Be Parties
-                <span className="text-white/40">◆</span>
-              </span>
+          <div className="marquee-track flex w-max">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-8 px-4 whitespace-nowrap">
+                {Array(4).fill(null).map((_, j) => (
+                  <span key={j} className="font-body text-[11px] tracking-[0.25em] font-bold text-white/80 uppercase flex items-center gap-8">
+                    Private Theatre Sangareddy
+                    <span className="text-white/40">◆</span>
+                    Birthday Celebrations
+                    <span className="text-white/40">◆</span>
+                    Anniversaries
+                    <span className="text-white/40">◆</span>
+                    Bride to Be Parties
+                    <span className="text-white/40">◆</span>
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
