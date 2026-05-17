@@ -16,7 +16,6 @@ interface FormData {
   guests: string
   eventDate: string
   vision: string
-  newsletter: boolean
 }
 
 export default function EnquirePage() {
@@ -30,7 +29,6 @@ export default function EnquirePage() {
     guests: '',
     eventDate: '',
     vision: '',
-    newsletter: false,
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -42,7 +40,7 @@ export default function EnquirePage() {
     setError('')
 
     try {
-      const res = await fetch('/api/enquire', {
+      const res = await fetch('/api/enquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

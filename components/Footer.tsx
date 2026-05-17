@@ -28,9 +28,9 @@ export default function Footer() {
 
         <div className="w-16 h-px bg-secondary/40 mb-8" />
 
-        {/* Instagram only — no YouTube */}
+        {/* Instagram */}
         <a
-          href="https://instagram.com"
+          href="https://www.instagram.com/house_of_bash_?igsh=cm9jenFpdHFkODI3"
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 border border-primary/10 flex items-center justify-center rounded-full text-primary hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 mb-8"

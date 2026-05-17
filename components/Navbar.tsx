@@ -18,7 +18,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'HOME' },
-    { href: '/addons', label: 'ADD-ONS' },
+    { href: '/addons', label: 'PRICING & ADD-ONS' },
     { href: '/gallery', label: 'GALLERY' },
   ]
 
@@ -29,8 +29,8 @@ export default function Navbar() {
           menuOpen 
             ? 'bg-primary' 
             : scrolled
-            ? 'bg-surface/98 backdrop-blur-xl shadow-[0_4px_60px_rgba(9,20,38,0.08)]'
-            : 'bg-surface/95 backdrop-blur-md'
+            ? 'bg-surface/95 backdrop-blur-xl shadow-[0_4px_60px_rgba(9,20,38,0.08)]'
+            : 'bg-surface/90 backdrop-blur-md'
         } ${menuOpen ? 'border-b border-white/10' : 'border-b border-primary/8'}`}
       >
         <div className="flex justify-between items-center h-20 px-6 md:px-8 max-w-[1280px] mx-auto">

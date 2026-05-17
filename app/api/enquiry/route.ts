@@ -14,24 +14,10 @@ interface EnquiryPayload {
   guests: string
   eventDate: string
   vision: string
-  newsletter: boolean
   cartItems: CartItem[]
   total: number
 }
 
-// ─── Gmail SMTP transporter ────────────────────────────────────────────────
-// Set these in your .env.local file:
-//   GMAIL_USER=your@gmail.com
-//   GMAIL_APP_PASSWORD=your_16_char_app_password
-//   NOTIFY_EMAIL=destination@email.com   (where you want to receive enquiries)
-//
-// HOW TO GET A GMAIL APP PASSWORD:
-//   1. Go to your Google Account → Security
-//   2. Enable 2-Step Verification (required)
-//   3. Search "App passwords" in your Google Account
-//   4. Create a new app password → select "Mail" + "Other"
-//   5. Copy the 16-character password into GMAIL_APP_PASSWORD
-// ───────────────────────────────────────────────────────────────────────────
 
 function createTransporter() {
   return nodemailer.createTransport({
@@ -94,7 +80,6 @@ function buildAdminEmailHTML(data: EnquiryPayload): string {
               ['Event Type', data.eventType],
               ['Number of Guests', data.guests || 'Not specified'],
               ['Preferred Date', data.eventDate || 'Flexible'],
-              ['Newsletter Opt-in', data.newsletter ? 'Yes' : 'No'],
             ]
               .map(
                 ([label, value]) => `
@@ -160,7 +145,7 @@ function buildAdminEmailHTML(data: EnquiryPayload): string {
       <tr>
         <td style="background:#f8f9ff;padding:24px 40px;border-top:1px solid #e8ecf4;text-align:center;">
           <p style="margin:0;font-family:'Manrope',Arial,sans-serif;font-size:12px;color:#45474c;">Please respond to this enquiry within <strong>24 hours</strong>.</p>
-          <p style="margin:8px 0 0;font-family:'Manrope',Arial,sans-serif;font-size:10px;color:#75777d;letter-spacing:2px;text-transform:uppercase;">© 2024 House of Bash · Architectural Minimalist Luxury</p>
+          <p style="margin:8px 0 0;font-family:'Manrope',Arial,sans-serif;font-size:10px;color:#75777d;letter-spacing:2px;text-transform:uppercase;">© 2024 House of Bash. All rights reserved.</p>
         </td>
       </tr>
 
