@@ -108,9 +108,9 @@ export default function EnquirePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
             {/* Form */}
-            <div className="lg:col-span-7">
-              <ScrollReveal direction="left">
-                <div className="bg-white p-8 md:p-12 border border-primary/5">
+            <div className="lg:col-span-7 h-full">
+              <ScrollReveal direction="left" className="h-full">
+                <div className="bg-white p-8 md:p-12 border border-primary/5 h-full flex flex-col">
                   {submitted ? (
                     <div className="text-center py-16">
                       <span className="material-symbols-outlined text-secondary text-6xl mb-6 block">check_circle</span>
@@ -325,8 +325,8 @@ export default function EnquirePage() {
             </div>
 
             {/* Info Column */}
-            <div className="lg:col-span-5 space-y-10">
-              <ScrollReveal direction="right">
+            <div className="lg:col-span-5 h-full">
+              <ScrollReveal direction="right" className="h-full flex flex-col">
                 {/* Image */}
                 <div className="relative overflow-hidden aspect-[4/5] border border-primary/5 group">
                   <Image
@@ -345,28 +345,30 @@ export default function EnquirePage() {
                 </div>
 
                 {/* Contact Details */}
-                <div className="space-y-5">
-                  <h4 className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary uppercase">Reach Us Directly</h4>
-                  {[
-                    { icon: 'call', text: '+91 98765 12345', href: 'tel:+919876512345' },
-                    { icon: 'chat', text: 'WhatsApp Us', href: 'https://wa.me/919876512345' },
-                    { icon: 'mail', text: 'concierge@houseofbash.in', href: 'mailto:concierge@houseofbash.in' },
-                    { icon: 'location_on', text: 'Banjara Hills, Hyderabad, Telangana', href: '#' },
-                    { icon: 'schedule', text: '10 AM – 11 PM, All Days', href: '#' },
-                  ].map((contact) => (
-                    <a
-                      key={contact.icon}
-                      href={contact.href}
-                      className="flex items-center gap-4 group hover:opacity-80 transition-opacity"
-                    >
-                      <span className="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform duration-300">{contact.icon}</span>
-                      <span className="font-body text-base text-primary">{contact.text}</span>
-                    </a>
-                  ))}
+                <div className="bg-white p-8 md:p-10 border border-primary/5 mt-8 mb-8">
+                  <h4 className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary uppercase mb-8">Reach Us Directly</h4>
+                  <div className="space-y-6">
+                    {[
+                      { icon: 'call', text: '+91 98765 12345', href: 'tel:+919876512345' },
+                      { icon: 'chat', text: 'WhatsApp Us', href: 'https://wa.me/919876512345' },
+                      { icon: 'mail', text: 'concierge@houseofbash.in', href: 'mailto:concierge@houseofbash.in' },
+                      { icon: 'location_on', text: 'Banjara Hills, Hyderabad, Telangana', href: '#' },
+                      { icon: 'schedule', text: '10 AM – 11 PM, All Days', href: '#' },
+                    ].map((contact) => (
+                      <a
+                        key={contact.icon}
+                        href={contact.href}
+                        className="flex items-center gap-5 group hover:opacity-80 transition-opacity"
+                      >
+                        <span className="material-symbols-outlined text-secondary text-[22px] group-hover:scale-110 transition-transform duration-300">{contact.icon}</span>
+                        <span className="font-body text-base text-primary">{contact.text}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Quick Links */}
-                <div className="flex gap-4">
+                <div className="flex gap-4 mt-auto">
                   <Link
                     href="/addons"
                     className="flex-1 text-center border border-primary/20 py-3 font-body text-[10px] tracking-widest font-bold uppercase text-primary hover:bg-primary hover:text-white transition-all duration-300"
