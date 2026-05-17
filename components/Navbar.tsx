@@ -44,9 +44,7 @@ export default function Navbar() {
               sizes="(max-width: 768px) 128px, 256px"
               quality={100}
               priority
-              className={`object-contain transition-all duration-300 ${
-                menuOpen ? 'scale-[1.25]' : 'scale-[1.4] md:scale-[1.5]'
-              }`}
+              className="object-contain transition-all duration-300 scale-[1.4] md:scale-[1.5]"
             />
           </Link>
 
