@@ -74,11 +74,11 @@ export default function EnquirePage() {
     },
     {
       q: 'How long is each session?',
-      a: 'Each booking gives you 3 full hours of exclusive private theatre access. Additional hours can be arranged at extra cost.',
+      a: 'It depends on the slot you select. We offer both 3-hour and 1.5-hour exclusive private theatre slots.',
     },
     {
       q: 'Is there a minimum guest count?',
-      a: 'No minimum! Our base package covers up to 5 guests. Extra guests can be added — just let us know during the enquiry.',
+      a: 'No minimum! Our base package covers up to 5 guests. Extra guests will be charged: kids under 5 years are ₹100 per kid, and others are ₹350 per person.',
     },
     {
       q: 'How does payment work?',
@@ -414,7 +414,7 @@ export default function EnquirePage() {
                 </div>
 
                 {/* Quick Links */}
-                <div className="flex gap-4 mt-auto">
+                <div className="flex gap-4">
                   <Link
                     href="/addons"
                     className="flex-1 text-center border border-primary/20 py-3 font-body text-[10px] tracking-widest font-bold uppercase text-primary hover:bg-primary hover:text-white transition-all duration-300"
