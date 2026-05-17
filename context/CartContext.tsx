@@ -64,7 +64,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const getBasePrice = (slot: Slot | null) => {
     if (!slot) return BASE_PRICE
     if (slot.time === '08:00 AM – 09:30 AM' || slot.time === '05:00 PM – 06:30 PM') {
-      return BASE_PRICE - 800
+      return BASE_PRICE - 700
     }
     return BASE_PRICE
   }

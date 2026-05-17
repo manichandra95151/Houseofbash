@@ -132,7 +132,7 @@ export default function HomePage() {
                 <em className="not-italic text-secondary-fixed">Blockbuster Celebration</em>
               </h1>
               <p className="font-body text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg opacity-0 animate-[fadeUp_0.9s_ease_0.6s_forwards]">
-                Birthdays, anniversaries, proposals, bachelorettes, we transform any occasion into a blockbuster experience. Full decoration included, starting at just ₹2,500.
+                Birthdays, anniversaries, proposals, bachelorettes, we transform any occasion into a blockbuster experience. Full decoration included, starting at just ₹1800.
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 opacity-0 animate-[fadeUp_0.9s_ease_0.8s_forwards]">
                 <Link
@@ -373,7 +373,7 @@ export default function HomePage() {
                 Your Private Theatre Awaits
               </h2>
               <p className="font-body text-base md:text-lg text-white/70 max-w-xl mx-auto mb-12 leading-relaxed">
-                Starting at just ₹2,500. Full decoration included. Enquire now and our team gets back within 24 hours.
+                Starting at just ₹1800. Full decoration included. Enquire now and our team gets back within 24 hours.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-5">
                 <Link

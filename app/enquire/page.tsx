@@ -82,7 +82,7 @@ export default function EnquirePage() {
     },
     {
       q: 'How does payment work?',
-      a: 'Once we confirm your slot, a booking amount is collected to secure the date. The remaining balance is settled on the day of your event.',
+      a: 'Once we confirm your slot, an advance booking amount of ₹1000 is required to secure the date. The remaining balance can be settled on the day of your event.',
     },
     {
       q: 'What is your refund policy?',

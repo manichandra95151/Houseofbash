@@ -79,12 +79,12 @@ export default function AddonsPage() {
                   </span>
                   <h2 className="font-display text-3xl md:text-[40px] text-white mb-5">Base Celebration Package</h2>
                   <p className="text-on-primary-container text-base md:text-lg mb-8 max-w-xl font-body">
-                    Every celebration starts here. A complete {basePrice === 1700 ? '1.5' : '3'}-hour private theatre experience with beautiful decorations, perfect for small groups.
+                    Every celebration starts here. A complete {basePrice === 1800 ? '1.5' : '3'}-hour private theatre experience with beautiful decorations, perfect for small groups.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
                       { icon: 'groups', label: 'Up to 5 Guests Included', sub: 'Extra guests: ₹350/person. Kids under 5 years: Free (up to 4 kids). Extra kids: ₹100/child.' },
-                      { icon: 'schedule', label: `${basePrice === 1700 ? '1.5' : '3'} Hours Private Access`, sub: '' },
+                      { icon: 'schedule', label: `${basePrice === 1800 ? '1.5' : '3'} Hours Private Access`, sub: '' },
                       { icon: 'auto_awesome', label: 'Beautiful Decorations', sub: '' },
                     ].map((feat) => (
                       <div key={feat.label} className="flex items-start gap-3">
@@ -101,6 +101,9 @@ export default function AddonsPage() {
                   <span className="text-secondary-fixed font-body text-[10px] tracking-widest font-bold mb-2 uppercase">STARTING FROM</span>
                   <div className="font-display text-5xl text-white mb-2">₹{basePrice.toLocaleString('en-IN')}</div>
                   <span className="text-on-primary-container text-[10px] font-body uppercase tracking-tight">Essential Foundation</span>
+                  <span className="text-on-primary-container text-[10px] font-body text-center mt-4 leading-relaxed">
+                    ₹1000 advance payment required to confirm booking
+                  </span>
                 </div>
               </div>
             </div>
@@ -133,7 +136,7 @@ export default function AddonsPage() {
                   >
                     {isDiscounted && (
                       <div className="absolute top-0 right-0 bg-secondary text-white text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-bl-lg">
-                        Save ₹800
+                        Save ₹700
                       </div>
                     )}
                     <div className="absolute top-0 left-0 bg-primary/5 text-primary text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-br-lg border-b border-r border-primary/10">
