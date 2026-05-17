@@ -42,18 +42,18 @@ const occasions = [
 const processSteps = [
   {
     num: '01',
-    title: 'Pick Your Date & Slot',
-    desc: 'Browse available slots and lock in your preferred date. Morning, afternoon, or evening — the theatre is yours for 3 full hours.',
+    title: 'Curate Your Experience',
+    desc: 'Browse our curated menu and select your preferred enhancements, gourmet food, and photography from the Add-ons page.',
   },
   {
     num: '02',
-    title: 'Choose Your Vibe',
-    desc: 'Select your decoration theme, add-ons, and food from our curated menu. We handle all the setup before you arrive.',
+    title: 'Submit Your Enquiry',
+    desc: 'Share your preferred date, guest count, and vision with us. Your selected add-ons are automatically attached to your request.',
   },
   {
     num: '03',
-    title: 'Show Up & Celebrate',
-    desc: 'Walk in to a fully decorated, ready-to-party theatre. Enjoy Dolby Atmos sound, a 150-inch screen, and memories that last forever.',
+    title: 'Quick Confirmation',
+    desc: 'Our team reviews your details and reaches out within 24 hours to finalize your booking and lock in your celebration.',
   },
 ]
 
@@ -272,7 +272,7 @@ export default function HomePage() {
                     HOW IT WORKS
                   </span>
                   <h2 className="font-display text-3xl md:text-[36px] text-primary mb-10">
-                    From Booking to Bash in 3 Easy Steps
+                    Secure Your Celebration in 3 Simple Steps
                   </h2>
                 </ScrollReveal>
 

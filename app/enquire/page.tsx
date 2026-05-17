@@ -20,7 +20,7 @@ interface FormData {
 }
 
 export default function EnquirePage() {
-  const { items, total, clearCart } = useCart()
+  const { items, total, clearCart, toggleItem } = useCart()
 
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
@@ -243,8 +243,18 @@ export default function EnquirePage() {
                         ) : (
                           <div className="space-y-3 mb-4">
                             {items.map((item) => (
-                              <div key={item.name} className="flex justify-between items-center font-body text-sm">
-                                <span className="text-on-surface-variant">{item.name}</span>
+                              <div key={item.name} className="flex justify-between items-center font-body text-sm group">
+                                <span className="text-on-surface-variant flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    onClick={() => toggleItem(item)}
+                                    className="text-error opacity-0 group-hover:opacity-100 transition-opacity flex items-center"
+                                    title="Remove"
+                                  >
+                                    <span className="material-symbols-outlined text-[14px]">close</span>
+                                  </button>
+                                  {item.name}
+                                </span>
                                 <span className="font-bold text-primary">₹{item.price.toLocaleString()}</span>
                               </div>
                             ))}
@@ -282,20 +292,6 @@ export default function EnquirePage() {
                           onChange={(e) => setFormData({ ...formData, vision: e.target.value })}
                           className="form-field resize-none"
                         />
-                      </div>
-
-                      {/* Newsletter */}
-                      <div className="flex items-start gap-3 py-2">
-                        <input
-                          type="checkbox"
-                          id="newsletter"
-                          checked={formData.newsletter}
-                          onChange={(e) => setFormData({ ...formData, newsletter: e.target.checked })}
-                          className="mt-1 accent-secondary cursor-pointer"
-                        />
-                        <label htmlFor="newsletter" className="font-body text-sm text-on-surface-variant cursor-pointer">
-                          Keep me posted on offers, new packages, and party inspiration from House of Bash.
-                        </label>
                       </div>
 
                       {/* Error */}
@@ -345,7 +341,7 @@ export default function EnquirePage() {
                   <div className="absolute inset-0 bg-primary/20 flex flex-col justify-end p-8 text-white">
                     <h3 className="font-display text-2xl mb-2">Quick Turnaround</h3>
                     <p className="font-body text-sm opacity-90">
-                      Our team confirms bookings within 24 hours — sometimes faster.
+                      Our team confirms bookings within 24 hours, sometimes faster
                     </p>
                   </div>
                 </div>

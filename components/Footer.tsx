@@ -42,7 +42,7 @@ export default function Footer() {
         </a>
 
         <p className="font-body text-sm text-on-surface-variant opacity-60">
-          © 2024 House of Bash. Architectural Minimalist Luxury.
+          © 2024 House of Bash. All rights reserved.
         </p>
       </div>
     </footer>
