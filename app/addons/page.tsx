@@ -18,7 +18,7 @@ const BASE_PRICE = 2500
 const enhancements = [
   { name: 'Flower Bouquet', desc: 'Fresh seasonal arrangements', price: 600 },
   { name: 'Vehicle Entry', desc: 'Arrival logistics & access', price: 350 },
-  { name: 'Fire Coils', desc: 'Stunning pyrotechnic display (set of 2)', price: 200 },
+  { name: 'Fire Coils', desc: 'Stunning pyrotechnic display (1 set)', price: 400 },
   { name: 'Single Rose', desc: 'Premium long-stemmed', price: 100 },
   { name: 'Party Props', desc: 'Themed curated accessories', price: 250 },
 ]
@@ -27,8 +27,8 @@ const foods = [
   {
     name: 'Artisanal Pizza',
     desc: 'Hand-stretched dough with premium toppings.',
-    price: 2500,
-    priceLabel: '₹2,500 (Event Package)',
+    price: 350,
+    priceLabel: '₹350 (Per Unit)',
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiSPim7rnp8tYtcIiXWei0qHAk-yVkkQsWF0mQKQ2AfRZSOKJQdszw9ZsczgSUEbOpx1W8VL76UI6LXcwZBvQoESxfox-jqbbORRu0p0F8Bp3VRhRLd48h0ppXPEGpn3TJSUOzm5efIgbnictdu76Tu9YADOF-Ly7A9C1h_p9j9lvrZWAuok-cCtgtYCfXCiq3Ng7MPmuei-h-HTSejBApPe915qDnO-zr-ocxOEZJglV5BCHSCf_lrXQkdLEnWntCHJNtqxr0i_Kq',
   },
   {
@@ -49,6 +49,7 @@ const foods = [
 
 export default function AddonsPage() {
   const { items, toggleItem, isSelected, total } = useCart()
+  const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
     <>
@@ -82,7 +83,7 @@ export default function AddonsPage() {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
-                      { icon: 'groups', label: 'Up to 5 Guests', sub: 'Kids policy: Up to 4 kids included free. Additional kids at ₹100 each.' },
+                      { icon: 'groups', label: 'Up to 5 Guests', sub: 'Extra person ₹350 per head. Kids policy: Up to 4 kids included free. Additional kids at ₹100 each.' },
                       { icon: 'schedule', label: '3 Hours Theatre Access', sub: '' },
                       { icon: 'auto_awesome', label: 'Full Decoration Included', sub: '' },
                     ].map((feat) => (
@@ -265,7 +266,7 @@ export default function AddonsPage() {
                         {item.name}
                       </h4>
                       <p className="text-sm text-on-surface-variant font-body">{item.desc}</p>
-                      <button className="font-body text-[10px] tracking-widest font-bold text-secondary mt-2 uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button className="font-body text-[10px] tracking-widest font-bold text-secondary mt-2 uppercase transition-opacity">
                         {isSelected(item.name) ? '✓ Added' : 'Add to Experience'}
                       </button>
                     </div>
@@ -312,16 +313,14 @@ export default function AddonsPage() {
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <button className="bg-white text-primary px-6 py-2 font-body text-[11px] tracking-widest font-bold uppercase">
-                        {isSelected(food.name) ? '✓ Added' : 'Add to Experience'}
-                      </button>
-                    </div>
                   </div>
-                  <div className="p-6 text-center">
+                  <div className="p-6 text-center flex flex-col items-center">
                     <h4 className="font-display text-xl text-primary mb-2">{food.name}</h4>
                     <p className="text-on-surface-variant text-sm mb-3 font-body">{food.desc}</p>
-                    <div className="font-body text-sm font-bold text-secondary">{food.priceLabel}</div>
+                    <div className="font-body text-sm font-bold text-secondary mb-4">{food.priceLabel}</div>
+                    <button className={`px-6 py-2 font-body text-[11px] tracking-widest font-bold uppercase transition-all duration-300 ${isSelected(food.name) ? 'bg-secondary text-white' : 'bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white'}`}>
+                      {isSelected(food.name) ? '✓ Added' : 'Add to Experience'}
+                    </button>
                   </div>
                 </div>
               </ScrollReveal>
@@ -372,13 +371,22 @@ export default function AddonsPage() {
             : 'translate-y-8 opacity-0 pointer-events-none'
         }`}
       >
-        <div className="bg-primary text-white p-5">
+        <div 
+          className="bg-primary text-white p-5 cursor-pointer select-none"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
           <h3 className="font-display text-lg flex justify-between items-center">
-            Your Experience
-            <span className="material-symbols-outlined text-secondary-fixed text-xl">auto_awesome</span>
+            <div className="flex items-center gap-2">
+              Your Experience
+              <span className="material-symbols-outlined text-secondary-fixed text-xl">auto_awesome</span>
+            </div>
+            <span className={`material-symbols-outlined transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`}>
+              expand_more
+            </span>
           </h3>
         </div>
-        <div className="p-5">
+        <div className={`transition-all duration-300 overflow-hidden bg-white ${isCollapsed ? 'max-h-0' : 'max-h-[500px]'}`}>
+          <div className="p-5">
           <div className="space-y-3 max-h-[200px] overflow-y-auto mb-5 pr-1">
             {items.map((item) => (
               <div key={item.name} className="flex justify-between items-center group">
@@ -407,6 +415,7 @@ export default function AddonsPage() {
           >
             Enquire Now with Selection
           </Link>
+          </div>
         </div>
       </div>
 

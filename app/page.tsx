@@ -125,14 +125,14 @@ export default function HomePage() {
           <div className="relative z-10 max-w-[1280px] mx-auto px-6 md:px-8 w-full">
             <div className="max-w-2xl">
               <span className="font-body text-[11px] tracking-[0.35em] font-bold text-secondary-fixed mb-5 block opacity-0 animate-[fadeUp_0.8s_ease_0.2s_forwards]">
-                {"HYDERABAD'S FINEST PRIVATE THEATRE"}
+                {"SANGAREDDY'S FINEST PRIVATE THEATRE"}
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-[58px] leading-[1.08] tracking-tight text-white mb-7 opacity-0 animate-[fadeUp_0.9s_ease_0.4s_forwards]">
                 Host Your <br />
                 <em className="not-italic text-secondary-fixed">Blockbuster Celebration</em>
               </h1>
               <p className="font-body text-base md:text-lg text-white/80 mb-10 leading-relaxed max-w-lg opacity-0 animate-[fadeUp_0.9s_ease_0.6s_forwards]">
-                Birthdays, anniversaries, proposals, bachelorettes — we transform any occasion into a blockbuster experience. Full decoration included, starting at just ₹2,500.
+                Birthdays, anniversaries, proposals, bachelorettes, we transform any occasion into a blockbuster experience. Full decoration included, starting at just ₹2,500.
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 opacity-0 animate-[fadeUp_0.9s_ease_0.8s_forwards]">
                 <Link
@@ -248,7 +248,7 @@ export default function HomePage() {
           <div className="marquee-track flex gap-8 whitespace-nowrap">
             {Array(8).fill(null).map((_, i) => (
               <span key={i} className="font-body text-[11px] tracking-[0.25em] font-bold text-white/80 uppercase flex items-center gap-8">
-                Private Theatre Hyderabad
+                Private Theatre Sangareddy
                 <span className="text-white/40">◆</span>
                 Birthday Celebrations
                 <span className="text-white/40">◆</span>

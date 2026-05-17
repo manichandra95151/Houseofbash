@@ -24,15 +24,17 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-          scrolled
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+          menuOpen 
+            ? 'bg-primary' 
+            : scrolled
             ? 'bg-surface/98 backdrop-blur-xl shadow-[0_4px_60px_rgba(9,20,38,0.08)]'
             : 'bg-surface/95 backdrop-blur-md'
-        } border-b border-primary/8`}
+        } ${menuOpen ? 'border-b border-white/10' : 'border-b border-primary/8'}`}
       >
         <div className="flex justify-between items-center h-20 px-6 md:px-8 max-w-[1280px] mx-auto">
           {/* Logo */}
-          <Link href="/" className="font-display text-xl tracking-tight text-primary hover:text-secondary transition-colors duration-300">
+          <Link href="/" className={`font-display text-xl tracking-tight transition-colors duration-300 ${menuOpen ? 'text-white' : 'text-primary hover:text-secondary'}`}>
             House of Bash
           </Link>
 
@@ -68,20 +70,20 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
+            className="md:hidden flex flex-col gap-1.5 p-2 relative z-[110]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
-            <span className={`block w-6 h-0.5 bg-primary transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-primary transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block w-6 h-0.5 bg-primary transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'bg-white rotate-45 translate-y-2' : 'bg-primary'}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'opacity-0 bg-white' : 'bg-primary'}`} />
+            <span className={`block w-6 h-0.5 transition-all duration-300 ${menuOpen ? 'bg-white -rotate-45 -translate-y-2' : 'bg-primary'}`} />
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-primary transition-all duration-500 ${
+        className={`fixed inset-0 z-[90] bg-primary transition-all duration-500 pt-20 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >

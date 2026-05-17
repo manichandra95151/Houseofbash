@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="flex flex-col items-center gap-2 px-5 md:px-6 max-w-[1280px] mx-auto text-center">
         <div className="font-display text-2xl text-primary mb-2">House of Bash</div>
         <p className="font-body text-[10px] tracking-[0.2em] text-on-surface-variant uppercase mb-8">
-          Private Theatre Celebrations · Hyderabad
+          Private Theatre Celebrations · Sangareddy
         </p>
 
         <div className="flex flex-wrap justify-center gap-8 md:gap-10 mb-10">

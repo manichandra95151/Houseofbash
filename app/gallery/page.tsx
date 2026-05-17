@@ -105,7 +105,7 @@ export default function GalleryPage() {
         </header>
 
         {/* Category Filter */}
-        <section className="sticky top-20 bg-surface z-40 border-b border-primary/5">
+        <section className="relative md:sticky md:top-20 bg-surface z-40 border-b border-primary/5">
           <div className="max-w-[1280px] mx-auto px-6 md:px-8 py-5 overflow-x-auto">
             <div className="flex justify-start md:justify-center gap-8 md:gap-12 min-w-max">
               {categories.map((cat) => (

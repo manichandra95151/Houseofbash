@@ -20,8 +20,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: 'House of Bash | Private Theatre Celebrations',
-  description: "House of Bash — Hyderabad's premier private theatre event space. Book your birthday, anniversary, bride-to-be, or private party in a luxury cinematic setting.",
-  keywords: 'private theatre, birthday celebration, anniversary, bride to be, Hyderabad, luxury events, House of Bash',
+  description: "House of Bash — Sangareddy's premier private theatre event space. Book your birthday, anniversary, bride-to-be, or private party in a luxury cinematic setting.",
+  keywords: 'private theatre, birthday celebration, anniversary, bride to be, Sangareddy, luxury events, House of Bash',
 }
 
 export default function RootLayout({
