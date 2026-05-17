@@ -218,8 +218,8 @@ function buildGuestConfirmationHTML(data: EnquiryPayload): string {
           <p style="margin:0 0 24px;font-family:'Manrope',Arial,sans-serif;font-size:13px;color:#45474c;line-height:1.7;">
             If you have any immediate questions, feel free to reach out directly:
           </p>
-          <p style="margin:0;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;font-weight:600;">📞 +91 98765 12345</p>
-          <p style="margin:4px 0 0;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;font-weight:600;">✉️ concierge@houseofbash.in</p>
+          <p style="margin:0;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;font-weight:600;">📞 +91 9959638833</p>
+          <p style="margin:4px 0 0;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;font-weight:600;">✉️ houseofbash58@gmail.com</p>
         </td>
       </tr>
 
@@ -250,7 +250,7 @@ export async function POST(req: NextRequest) {
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
       console.error('GMAIL_USER or GMAIL_APP_PASSWORD not set in .env.local')
       return NextResponse.json(
-        { error: 'Sorry, we are unable to process enquiries at the moment. Please contact us directly at concierge@houseofbash.in or call +91 98765 12345.' },
+        { error: 'Sorry, we are unable to process enquiries at the moment. Please contact us directly at houseofbash58@gmail.com or call +91 9959638833.' },
         { status: 500 }
       )
     }

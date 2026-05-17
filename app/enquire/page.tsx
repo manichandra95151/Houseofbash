@@ -349,11 +349,11 @@ export default function EnquirePage() {
                   <h4 className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary uppercase mb-8">Reach Us Directly</h4>
                   <div className="space-y-6">
                     {[
-                      { icon: 'call', text: '+91 98765 12345', href: 'tel:+919876512345' },
-                      { icon: 'chat', text: 'WhatsApp Us', href: 'https://wa.me/919876512345' },
-                      { icon: 'mail', text: 'concierge@houseofbash.in', href: 'mailto:concierge@houseofbash.in' },
-                      { icon: 'location_on', text: 'Banjara Hills, Hyderabad, Telangana', href: '#' },
-                      { icon: 'schedule', text: '10 AM – 11 PM, All Days', href: '#' },
+                      { icon: 'call', text: '+91 9959638833', href: 'tel:+919959638833' },
+                      { icon: 'chat', text: 'WhatsApp Us', href: 'https://wa.me/919959638833' },
+                      { icon: 'mail', text: 'houseofbash58@gmail.com', href: 'mailto:houseofbash58@gmail.com' },
+                      { icon: 'location_on', text: 'Vidyanagar, Sangareddy, Telangana', href: 'https://maps.app.goo.gl/qnHe8xDXcGrXzF2j8' },
+                      { icon: 'schedule', text: '6 AM – 3 AM, 365 Days', href: '#' },
                     ].map((contact) => (
                       <a
                         key={contact.icon}
