@@ -16,31 +16,31 @@ interface SelectedItem {
 const BASE_PRICE = 2500
 
 const enhancements = [
-  { name: 'Flower Bouquet', desc: 'Fresh seasonal arrangements', price: 600 },
-  { name: 'Vehicle Entry', desc: 'Arrival logistics & access', price: 350 },
-  { name: 'Fire Coils', desc: 'Stunning pyrotechnic display (1 set)', price: 400 },
-  { name: 'Single Rose', desc: 'Premium long-stemmed', price: 100 },
-  { name: 'Party Props', desc: 'Themed curated accessories', price: 250 },
+  { name: 'Flower Bouquet', desc: 'A beautiful arrangement of fresh seasonal flowers.', price: 600 },
+  { name: 'Vehicle Entry', desc: 'Exclusive access to bring your vehicle directly to the venue entrance.', price: 350 },
+  { name: 'Fire Coils', desc: 'Sparkling cold-fire fountains for a magical entrance (1 set).', price: 400 },
+  { name: 'Single Rose', desc: 'A single, elegant long-stemmed red rose.', price: 100 },
+  { name: 'Party Props', desc: 'Fun and themed props like hats and signs for your photos.', price: 250 },
 ]
 
 const foods = [
   {
     name: 'Artisanal Pizza',
-    desc: 'Hand-stretched dough with premium toppings.',
+    desc: 'Freshly baked pizza with premium cheese and delicious toppings.',
     price: 350,
     priceLabel: '₹350 (Per Unit)',
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiSPim7rnp8tYtcIiXWei0qHAk-yVkkQsWF0mQKQ2AfRZSOKJQdszw9ZsczgSUEbOpx1W8VL76UI6LXcwZBvQoESxfox-jqbbORRu0p0F8Bp3VRhRLd48h0ppXPEGpn3TJSUOzm5efIgbnictdu76Tu9YADOF-Ly7A9C1h_p9j9lvrZWAuok-cCtgtYCfXCiq3Ng7MPmuei-h-HTSejBApPe915qDnO-zr-ocxOEZJglV5BCHSCf_lrXQkdLEnWntCHJNtqxr0i_Kq',
   },
   {
     name: 'House Burger',
-    desc: 'Prime cuts on toasted artisanal brioche.',
+    desc: 'Juicy, freshly made burger served on a soft toasted bun.',
     price: 350,
-    priceLabel: '₹350 (Per Person)',
+    priceLabel: '₹350 (Per Unit)',
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAMgYSyLmsKjAYkJFf__-56IfCJ4Wr3CnkJjeQ29LzlejPzWqGCR-U-92jRfKXPgUvsbxjC-PSfZ9ssoTgXs2JIJUED6OfMPS4Q7ohGS1_TKaaQZ4BgBzbNdmDGFS_DxgQUdfx0UTbrxwDb1D9D9U7cfat8UFIJrkQnibaQjMmGZ0OC-KgHr3skBxtNaKbsGRKTPoY1VXo-h3enYynW7PY73oLDMpClB5o80srBjQmnfjJCP0Z7dnnv191m_woDgCw8nU89yJ3FITr4',
   },
   {
     name: 'Gourmet Frankie',
-    desc: 'Savory wraps with secret spice blend.',
+    desc: 'Delicious, warm wraps filled with our special spiced fillings.',
     price: 250,
     priceLabel: '₹250 (Per Unit)',
     img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAicA20t1OXHb3zrQONEKaPOS1AR86HHXl0fRq1cUI8qi3bZuBdjGuYgYSX3TVmeHX_G3pHIRl3xuzAaMwXYV21aRbc9tLT0tSDJSVdAWjF5n-D3dr_aER2gHa2dkOuTEuRW6JK8EpAAIJdNY-huv2mkwMXc02lmkvzx6wI7kVeHA3UyhSYxEDZehx64eoDpDSFVb2RR0sI08VTUR5jAkm-OdHSmx5kKI5kirlVnX8KeP4ib20MSLDTZ7Vx2aaYkevE2wKyXf3GTtxA',
@@ -79,13 +79,13 @@ export default function AddonsPage() {
                   </span>
                   <h2 className="font-display text-3xl md:text-[40px] text-white mb-5">Base Celebration Package</h2>
                   <p className="text-on-primary-container text-base md:text-lg mb-8 max-w-xl font-body">
-                    Every House of Bash experience begins here. A perfectly curated baseline for your private event with no compromise on luxury.
+                    Every celebration starts here. A complete 3-hour private theatre experience with beautiful decorations, perfect for small groups.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
-                      { icon: 'groups', label: 'Up to 5 Guests', sub: 'Extra person ₹350 per head. Kids policy: Up to 4 kids included free. Additional kids at ₹100 each.' },
-                      { icon: 'schedule', label: '3 Hours Theatre Access', sub: '' },
-                      { icon: 'auto_awesome', label: 'Full Decoration Included', sub: '' },
+                      { icon: 'groups', label: 'Up to 5 Guests Included', sub: 'Extra guests: ₹350/person. Kids under 5 years: Free (up to 4 kids). Extra kids: ₹100/child.' },
+                      { icon: 'schedule', label: '3 Hours Private Access', sub: '' },
+                      { icon: 'auto_awesome', label: 'Beautiful Decorations', sub: '' },
                     ].map((feat) => (
                       <div key={feat.label} className="flex items-start gap-3">
                         <span className="material-symbols-outlined text-secondary-fixed mt-0.5">{feat.icon}</span>
@@ -131,7 +131,7 @@ export default function AddonsPage() {
                   <span className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary mb-4 block uppercase">Capturing Moments</span>
                   <h3 className="font-display text-2xl md:text-[28px] text-primary mb-4">Professional Photo & Cinematography</h3>
                   <p className="text-on-surface-variant mb-6 max-w-md font-body text-base">
-                    Comprehensive visual storytelling by our in-house premium media team, ensuring every architectural detail and emotion is preserved.
+                    Professional photography and video recording to perfectly capture all the special moments of your celebration.
                   </p>
                 </div>
                 <div className="flex justify-between items-end flex-wrap gap-4">
@@ -170,7 +170,7 @@ export default function AddonsPage() {
                 <div>
                   <h3 className="font-display text-xl mb-2">Grand Fog Entry</h3>
                   <p className="text-on-primary-container text-sm mb-5 font-body">
-                    Create a mystical atmosphere for your grand arrival with our heavy-density fog effects.
+                    A magical, cinematic entrance with beautiful low-lying fog covering the floor as you walk in.
                   </p>
                   <div className="flex justify-between items-center">
                     <span className="text-secondary-fixed font-display text-xl">₹700</span>
@@ -194,7 +194,7 @@ export default function AddonsPage() {
                 <div className="flex-1">
                   <h3 className="font-display text-3xl md:text-[42px] text-primary mb-5">Artisanal Cakes</h3>
                   <p className="text-on-surface-variant mb-12 font-body text-base max-w-lg">
-                    Bespoke confectionery crafted by master patisseries. Available in select signature flavors.
+                    Delicious, freshly baked cakes available in our signature flavors, made perfectly for your celebration.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-12 md:gap-16">
