@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
-import { useCart } from '../../context/CartContext'
+import { useCart, AVAILABLE_SLOTS } from '../../context/CartContext'
 
 interface FormData {
   fullName: string
@@ -19,7 +19,7 @@ interface FormData {
 }
 
 export default function EnquirePage() {
-  const { items, total, clearCart, toggleItem } = useCart()
+  const { items, total, clearCart, toggleItem, basePrice, selectedSlot, setSelectedSlot } = useCart()
 
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
@@ -47,6 +47,8 @@ export default function EnquirePage() {
           ...formData,
           cartItems: items,
           total,
+          basePrice,
+          selectedSlot: selectedSlot?.time || '',
         }),
       })
 
@@ -229,7 +231,7 @@ export default function EnquirePage() {
                       <div className="p-6 bg-surface-container-low border border-secondary/20">
                         <h4 className="font-body text-[11px] tracking-[0.15em] font-bold text-secondary mb-4 flex items-center gap-2 uppercase">
                           <span className="material-symbols-outlined text-[18px]">verified</span>
-                          Your Selected Add-ons
+                          Your Selection Summary
                         </h4>
 
                         {items.length === 0 ? (
@@ -260,19 +262,59 @@ export default function EnquirePage() {
                                 <span className="font-bold text-primary">₹{item.price.toLocaleString()}</span>
                               </div>
                             ))}
+                            {selectedSlot && (
+                              <div className="flex justify-between items-center font-body text-sm mt-4 pt-4 border-t border-secondary/10">
+                                <span className="text-on-surface-variant">Selected Slot</span>
+                                <span className="font-bold text-primary">{selectedSlot.time}</span>
+                              </div>
+                            )}
                           </div>
                         )}
 
                         <div className="border-t border-secondary/10 pt-4 flex justify-between items-center">
                           <div>
                             <span className="font-body text-[11px] tracking-widest font-bold text-primary uppercase">Estimated Total</span>
-                            <p className="font-body text-[9px] text-on-surface-variant mt-0.5">Incl. ₹2,500 base package</p>
+                            <p className="font-body text-[9px] text-on-surface-variant mt-0.5">Incl. ₹{basePrice.toLocaleString()} base package</p>
                           </div>
                           <span className="font-display text-2xl text-secondary">₹{total.toLocaleString()}</span>
                         </div>
-                        <p className="text-[10px] text-on-surface-variant mt-3 uppercase tracking-widest opacity-60 font-body">
+                        <p className="text-[10px] text-on-surface-variant mt-3 uppercase tracking-widest opacity-60 font-body mb-6">
                           Final pricing confirmed after our team reviews your requirements
                         </p>
+
+                        <div className="border-t border-secondary/10 pt-6">
+                          <h4 className="font-body text-[11px] tracking-[0.15em] font-bold text-secondary mb-4 flex items-center gap-2 uppercase">
+                            <span className="material-symbols-outlined text-[18px]">schedule</span>
+                            Change Slot
+                          </h4>
+                          <span className="font-body text-[9px] tracking-widest font-bold text-primary opacity-50 mb-3 block uppercase">Available Slots</span>
+                          <div className="space-y-1">
+                            {AVAILABLE_SLOTS.map((slot) => {
+                              const isDiscounted = slot.time === '08:00 AM – 09:30 AM' || slot.time === '05:00 PM – 06:30 PM'
+                              return (
+                                <button
+                                  key={slot.name}
+                                  type="button"
+                                  onClick={() => setSelectedSlot(slot)}
+                                  className={`w-full text-left px-4 py-3 font-body text-sm transition-colors flex justify-between items-center ${
+                                    selectedSlot?.name === slot.name
+                                      ? 'bg-secondary/10 border-l-2 border-secondary text-primary font-bold'
+                                      : 'text-on-surface-variant hover:bg-white hover:text-primary border-l-2 border-transparent'
+                                  }`}
+                                >
+                                  <span>{slot.time}</span>
+                                  <span className={`text-[9px] font-bold tracking-widest px-2 py-0.5 uppercase rounded-sm border ${
+                                    isDiscounted 
+                                      ? 'bg-primary/5 text-primary border-primary/10' 
+                                      : 'bg-transparent text-on-surface-variant border-secondary/10 opacity-70'
+                                  }`}>
+                                    {isDiscounted ? '1.5 HR' : '3 HR'}
+                                  </span>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </div>
 
                         {items.length === 0 && (
                           <Link

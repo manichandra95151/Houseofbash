@@ -43,7 +43,7 @@ const processSteps = [
   {
     num: '01',
     title: 'Curate Your Experience',
-    desc: 'Browse our curated menu and select your preferred enhancements, gourmet food, and photography from the Add-ons page.',
+    desc: 'Select your ideal time slot (including our specially discounted options), then browse our curated menu to add preferred enhancements from the Add-ons page.',
   },
   {
     num: '02',

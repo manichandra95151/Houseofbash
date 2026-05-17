@@ -6,7 +6,7 @@ import Image from 'next/image'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ScrollReveal from '@/components/ScrollReveal'
-import { useCart } from '../../context/CartContext'
+import { useCart, AVAILABLE_SLOTS } from '../../context/CartContext'
 
 interface SelectedItem {
   name: string
@@ -48,7 +48,7 @@ const foods = [
 ]
 
 export default function AddonsPage() {
-  const { items, toggleItem, isSelected, total } = useCart()
+  const { items, toggleItem, isSelected, total, basePrice, selectedSlot, setSelectedSlot } = useCart()
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
@@ -79,12 +79,12 @@ export default function AddonsPage() {
                   </span>
                   <h2 className="font-display text-3xl md:text-[40px] text-white mb-5">Base Celebration Package</h2>
                   <p className="text-on-primary-container text-base md:text-lg mb-8 max-w-xl font-body">
-                    Every celebration starts here. A complete 3-hour private theatre experience with beautiful decorations, perfect for small groups.
+                    Every celebration starts here. A complete {basePrice === 1700 ? '1.5' : '3'}-hour private theatre experience with beautiful decorations, perfect for small groups.
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
                       { icon: 'groups', label: 'Up to 5 Guests Included', sub: 'Extra guests: ₹350/person. Kids under 5 years: Free (up to 4 kids). Extra kids: ₹100/child.' },
-                      { icon: 'schedule', label: '3 Hours Private Access', sub: '' },
+                      { icon: 'schedule', label: `${basePrice === 1700 ? '1.5' : '3'} Hours Private Access`, sub: '' },
                       { icon: 'auto_awesome', label: 'Beautiful Decorations', sub: '' },
                     ].map((feat) => (
                       <div key={feat.label} className="flex items-start gap-3">
@@ -99,12 +99,53 @@ export default function AddonsPage() {
                 </div>
                 <div className="flex flex-col items-center justify-center p-8 bg-primary/50 border border-secondary/20 min-w-[220px]">
                   <span className="text-secondary-fixed font-body text-[10px] tracking-widest font-bold mb-2 uppercase">STARTING FROM</span>
-                  <div className="font-display text-5xl text-white mb-2">₹2,500</div>
+                  <div className="font-display text-5xl text-white mb-2">₹{basePrice.toLocaleString('en-IN')}</div>
                   <span className="text-on-primary-container text-[10px] font-body uppercase tracking-tight">Essential Foundation</span>
                 </div>
               </div>
             </div>
           </ScrollReveal>
+        </section>
+
+        {/* Select Your Slot Header */}
+        <div className="pt-10 px-5 md:px-8 max-w-[1280px] mx-auto text-center">
+          <ScrollReveal>
+            <span className="font-body text-[11px] tracking-[0.25em] font-bold text-secondary uppercase block mb-4">Timing</span>
+            <h2 className="font-display text-[28px] md:text-[32px] text-primary">Select Your Slot</h2>
+            <div className="w-[60px] h-px bg-secondary mx-auto mt-5" />
+          </ScrollReveal>
+        </div>
+
+        {/* Slots Grid */}
+        <section className="py-10 px-5 md:px-8 max-w-[1280px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {AVAILABLE_SLOTS.map((slot) => {
+              const isDiscounted = slot.time === '08:00 AM – 09:30 AM' || slot.time === '05:00 PM – 06:30 PM'
+              return (
+                <ScrollReveal key={slot.name}>
+                  <div
+                    onClick={() => setSelectedSlot(slot)}
+                    className={`cursor-pointer border p-6 flex flex-col items-center justify-center text-center transition-all duration-300 relative overflow-hidden ${
+                      selectedSlot?.name === slot.name
+                        ? 'border-secondary bg-secondary/5 shadow-sm'
+                        : 'border-primary/10 hover:border-secondary/50'
+                    }`}
+                  >
+                    {isDiscounted && (
+                      <div className="absolute top-0 right-0 bg-secondary text-white text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-bl-lg">
+                        Save ₹800
+                      </div>
+                    )}
+                    <div className="absolute top-0 left-0 bg-primary/5 text-primary text-[9px] font-bold tracking-widest px-3 py-1 uppercase rounded-br-lg border-b border-r border-primary/10">
+                      {isDiscounted ? '1.5 HR' : '3 HR'}
+                    </div>
+                    <span className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary mb-2 mt-2 block uppercase">{slot.name}</span>
+                    <span className="font-display text-lg text-primary">{slot.time}</span>
+                  </div>
+                </ScrollReveal>
+              )
+            })}
+          </div>
         </section>
 
         {/* Optional Add-ons Header */}

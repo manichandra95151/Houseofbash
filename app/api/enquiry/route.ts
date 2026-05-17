@@ -16,6 +16,8 @@ interface EnquiryPayload {
   vision: string
   cartItems: CartItem[]
   total: number
+  selectedSlot?: string
+  basePrice?: number
 }
 
 
@@ -80,6 +82,7 @@ function buildAdminEmailHTML(data: EnquiryPayload): string {
               ['Event Type', data.eventType],
               ['Number of Guests', data.guests || 'Not specified'],
               ['Preferred Date', data.eventDate || 'Flexible'],
+              ['Selected Slot', data.selectedSlot || 'Not selected'],
             ]
               .map(
                 ([label, value]) => `
@@ -121,7 +124,7 @@ function buildAdminEmailHTML(data: EnquiryPayload): string {
             </tr>
             <tr>
               <td style="padding:10px 16px;border-bottom:1px solid #e8ecf4;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#45474c;">Base Celebration Package</td>
-              <td style="padding:10px 16px;border-bottom:1px solid #e8ecf4;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;text-align:right;font-weight:600;">₹2,500</td>
+              <td style="padding:10px 16px;border-bottom:1px solid #e8ecf4;font-family:'Manrope',Arial,sans-serif;font-size:14px;color:#091426;text-align:right;font-weight:600;">${formatCurrency(data.basePrice || 2500)}</td>
             </tr>
             ${addOnsRows}
           </table>
@@ -198,6 +201,7 @@ function buildGuestConfirmationHTML(data: EnquiryPayload): string {
             ${[
               ['Event Type', data.eventType],
               ['Preferred Date', data.eventDate || 'To be confirmed'],
+              ['Selected Slot', data.selectedSlot || 'To be confirmed'],
               ['Guests', data.guests || 'To be confirmed'],
               ['Estimated Total', formatCurrency(data.total)],
             ]
@@ -226,7 +230,7 @@ function buildGuestConfirmationHTML(data: EnquiryPayload): string {
       <!-- Footer -->
       <tr>
         <td style="background:#091426;padding:24px 40px;text-align:center;">
-          <p style="margin:0;font-family:'Manrope',Arial,sans-serif;font-size:10px;color:#8590a6;letter-spacing:2px;text-transform:uppercase;">© 2024 House of Bash · Hyderabad · Architectural Minimalist Luxury</p>
+          <p style="margin:0;font-family:'Manrope',Arial,sans-serif;font-size:10px;color:#8590a6;letter-spacing:2px;text-transform:uppercase;">© 2024 House of Bash. All rights reserved.</p>
         </td>
       </tr>
 
