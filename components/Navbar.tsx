@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
@@ -34,8 +35,16 @@ export default function Navbar() {
       >
         <div className="flex justify-between items-center h-20 px-6 md:px-8 max-w-[1280px] mx-auto">
           {/* Logo */}
-          <Link href="/" className={`font-display text-xl tracking-tight transition-colors duration-300 ${menuOpen ? 'text-white' : 'text-primary hover:text-secondary'}`}>
-            House of Bash
+          <Link href="/" className="relative h-16 w-16 md:h-[80px] md:w-[80px] transition-transform duration-300 hover:opacity-80 flex items-center justify-center">
+            <Image 
+              src="/hb.png" 
+              alt="House of Bash" 
+              fill
+              sizes="(max-width: 768px) 128px, 256px"
+              quality={100}
+              priority
+              className="object-contain scale-[1.4] md:scale-[1.5]"
+            />
           </Link>
 
           {/* Desktop Nav */}
