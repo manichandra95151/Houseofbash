@@ -82,6 +82,10 @@ export default function EnquirePage() {
       q: 'How does payment work?',
       a: 'Once we confirm your slot, a booking amount is collected to secure the date. The remaining balance is settled on the day of your event.',
     },
+    {
+      q: 'What is your refund policy?',
+      a: 'We offer a full refund of your booking amount if you cancel at least 48 hours before your scheduled event.',
+    },
   ]
 
   return (
@@ -315,8 +319,8 @@ export default function EnquirePage() {
                         )}
                       </button>
 
-                      <p className="font-body text-[11px] text-on-surface-variant text-center">
-                        We respond within 24 hours · No spam, ever
+                      <p className="font-body text-[11px] text-on-surface-variant text-center leading-relaxed">
+                        We respond within 24 hours · 100% refund on cancellations 48hrs prior
                       </p>
                     </form>
                   )}
