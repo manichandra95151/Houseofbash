@@ -25,25 +25,28 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
-          menuOpen 
-            ? 'bg-primary' 
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${menuOpen
+            ? 'bg-primary'
             : scrolled
-            ? 'bg-surface/95 backdrop-blur-xl shadow-[0_4px_60px_rgba(9,20,38,0.08)]'
-            : 'bg-surface/90 backdrop-blur-md'
-        } ${menuOpen ? 'border-b border-white/10' : 'border-b border-primary/8'}`}
+              ? 'bg-surface/95 backdrop-blur-xl shadow-[0_4px_60px_rgba(9,20,38,0.08)]'
+              : 'bg-surface/90 backdrop-blur-md'
+          } ${menuOpen ? 'border-b border-white/10' : 'border-b border-primary/8'}`}
       >
         <div className="flex justify-between items-center h-20 px-6 md:px-8 max-w-[1280px] mx-auto">
           {/* Logo */}
-          <Link href="/" className="relative h-16 w-16 md:h-[80px] md:w-[80px] transition-transform duration-300 hover:opacity-80 flex items-center justify-center">
-            <Image 
-              src="/hb.png" 
-              alt="House of Bash" 
+          <Link href="/" className={`relative h-16 w-16 md:h-[80px] md:w-[80px] transition-all duration-300 hover:opacity-80 flex items-center justify-center z-[110] ${
+            menuOpen ? 'bg-white/95 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)]' : ''
+          }`}>
+            <Image
+              src="/hb.png"
+              alt="House of Bash"
               fill
               sizes="(max-width: 768px) 128px, 256px"
               quality={100}
               priority
-              className="object-contain scale-[1.4] md:scale-[1.5]"
+              className={`object-contain transition-all duration-300 ${
+                menuOpen ? 'scale-[1.25]' : 'scale-[1.4] md:scale-[1.5]'
+              }`}
             />
           </Link>
 
@@ -53,11 +56,10 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-body text-[12px] tracking-[0.15em] font-bold uppercase transition-all duration-300 relative group ${
-                  pathname === link.href
+                className={`font-body text-[12px] tracking-[0.15em] font-bold uppercase transition-all duration-300 relative group ${pathname === link.href
                     ? 'text-secondary border-b-2 border-secondary pb-1'
-                    : 'text-primary/70 hover:text-secondary'
-                }`}
+                    : menuOpen ? 'text-white/80 hover:text-white' : 'text-primary/70 hover:text-secondary'
+                  }`}
               >
                 {link.label}
                 {pathname !== link.href && (
@@ -92,9 +94,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-[90] bg-primary transition-all duration-500 pt-20 ${
-          menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-[90] bg-primary transition-all duration-500 pt-20 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-10">
           {navLinks.map((link, i) => (
@@ -102,9 +103,8 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={`font-display text-4xl text-white hover:text-secondary-fixed transition-all duration-300 ${
-                menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
-              }`}
+              className={`font-display text-4xl text-white hover:text-secondary-fixed transition-all duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}
               style={{ transitionDelay: `${i * 0.1 + 0.1}s` }}
             >
               {link.label}
