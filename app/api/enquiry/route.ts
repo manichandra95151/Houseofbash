@@ -250,7 +250,7 @@ export async function POST(req: NextRequest) {
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
       console.error('GMAIL_USER or GMAIL_APP_PASSWORD not set in .env.local')
       return NextResponse.json(
-        { error: 'Email service not configured. Please set GMAIL_USER and GMAIL_APP_PASSWORD in .env.local' },
+        { error: 'Sorry, we are unable to process enquiries at the moment. Please contact us directly at concierge@houseofbash.in or call +91 98765 12345.' },
         { status: 500 }
       )
     }
