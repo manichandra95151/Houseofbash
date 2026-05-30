@@ -78,7 +78,7 @@ export default function EnquirePage() {
     },
     {
       q: 'Is there a minimum guest count?',
-      a: 'No minimum! Our base package covers up to 5 guests. Extra guests will be charged: kids under 5 years are ₹150 per kid, and Guests (Age 10+) are ₹350 per person.',
+      a: 'No minimum! Our base package covers up to 5 guests. Extra guests will be charged: kids above 5 years are ₹150 per kid, and Guests (Age 10+) are ₹350 per person.',
     },
     {
       q: 'How does payment work?',
