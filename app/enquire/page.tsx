@@ -19,14 +19,14 @@ interface FormData {
 }
 
 export default function EnquirePage() {
-  const { items, total, clearCart, toggleItem, basePrice, selectedSlot, setSelectedSlot } = useCart()
+  const { items, total, clearCart, toggleItem, basePrice, selectedSlot, setSelectedSlot, extraGuests, extraKids } = useCart()
 
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
     phone: '',
     eventType: 'Birthday Celebration',
-    guests: '',
+    guests: (extraGuests > 0 || extraKids > 0) ? (5 + extraGuests + extraKids).toString() : '',
     eventDate: '',
     vision: '',
   })
@@ -78,7 +78,7 @@ export default function EnquirePage() {
     },
     {
       q: 'Is there a minimum guest count?',
-      a: 'No minimum! Our base package covers up to 5 guests. Extra guests will be charged: kids under 5 years are ₹100 per kid, and others are ₹350 per person.',
+      a: 'No minimum! Our base package covers up to 5 guests. Extra guests will be charged: kids under 5 years are ₹150 per kid, and Guests (Age 5+) are ₹350 per person.',
     },
     {
       q: 'How does payment work?',

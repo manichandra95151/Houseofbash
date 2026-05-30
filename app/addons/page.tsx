@@ -48,7 +48,7 @@ const foods = [
 ]
 
 export default function AddonsPage() {
-  const { items, toggleItem, isSelected, total, basePrice, selectedSlot, setSelectedSlot } = useCart()
+  const { items, toggleItem, isSelected, total, basePrice, selectedSlot, setSelectedSlot, extraGuests, setExtraGuests, extraKids, setExtraKids } = useCart()
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
@@ -83,7 +83,7 @@ export default function AddonsPage() {
                   </p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                     {[
-                      { icon: 'groups', label: 'Up to 5 Guests Included', sub: 'Extra guests: ₹350/person. Kids under 5 years: Free (up to 4 kids). Extra kids: ₹100/child.' },
+                      { icon: 'groups', label: 'Up to 5 Guests Included', sub: '' },
                       { icon: 'schedule', label: `${basePrice === 1800 ? '1.5' : '3'} Hours Private Access`, sub: '' },
                       { icon: 'auto_awesome', label: 'Beautiful Decorations', sub: '' },
                     ].map((feat) => (
@@ -163,6 +163,80 @@ export default function AddonsPage() {
         {/* Bento Grid: Photo & Fog */}
         <section className="py-10 px-5 md:px-8 max-w-[1280px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+            {/* Extra Persons Add-on */}
+            <ScrollReveal className="md:col-span-12" direction="up">
+              <div className="bg-surface-container-lowest border border-primary/10 p-8 flex flex-col md:flex-row justify-between items-center gap-8 min-h-[200px] transition-all duration-300">
+                <div className="flex-1">
+                  <span className="font-body text-[11px] tracking-[0.2em] font-bold text-secondary mb-2 block uppercase">
+                    Bring Your Loved Ones
+                  </span>
+                  <h3 className="font-display text-2xl md:text-[28px] text-primary mb-3">
+                    Extra Guests & Kids
+                  </h3>
+                  <p className="text-on-surface-variant max-w-xl font-body text-sm leading-relaxed">
+                    The base package includes up to 5 guests. Add more guests below. Guests (Age 5+) are charged at <strong>₹350/head</strong> and kids (under 5 years) at <strong>₹150/head</strong>.
+                  </p>
+                </div>
+                
+                <div className="flex flex-col sm:flex-row items-center gap-8 w-full md:w-auto">
+                  {/* Extra Guests Counter */}
+                  <div className="flex flex-col items-center p-4 bg-primary/5 border border-primary/5 min-w-[140px] w-full sm:w-auto">
+                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Guests (Age 5+)</span>
+                    <div className="flex items-center gap-4">
+                      <button 
+                        onClick={() => setExtraGuests(Math.max(0, extraGuests - 1))}
+                        className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-secondary hover:text-white hover:border-secondary transition-all text-primary font-bold text-lg select-none"
+                      >
+                        -
+                      </button>
+                      <span className="font-display text-2xl text-primary w-6 text-center">{extraGuests}</span>
+                      <button 
+                        onClick={() => setExtraGuests(extraGuests + 1)}
+                        className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-secondary hover:text-white hover:border-secondary transition-all text-primary font-bold text-lg select-none"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <span className="text-[10px] text-on-surface-variant/60 font-body mt-2">₹350 each</span>
+                  </div>
+
+                  {/* Kids Counter */}
+                  <div className="flex flex-col items-center p-4 bg-primary/5 border border-primary/5 min-w-[140px] w-full sm:w-auto">
+                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Kids (Under 5)</span>
+                    <div className="flex items-center gap-4">
+                      <button 
+                        onClick={() => setExtraKids(Math.max(0, extraKids - 1))}
+                        className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-secondary hover:text-white hover:border-secondary transition-all text-primary font-bold text-lg select-none"
+                      >
+                        -
+                      </button>
+                      <span className="font-display text-2xl text-primary w-6 text-center">{extraKids}</span>
+                      <button 
+                        onClick={() => setExtraKids(extraKids + 1)}
+                        className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center hover:bg-secondary hover:text-white hover:border-secondary transition-all text-primary font-bold text-lg select-none"
+                      >
+                        +
+                      </button>
+                    </div>
+                    <span className="text-[10px] text-on-surface-variant/60 font-body mt-2">₹150 each</span>
+                  </div>
+
+                  {/* Pricing Subtotal Display */}
+                  <div className="flex flex-col items-center md:items-end justify-center min-w-[120px]">
+                    <span className="font-body text-[10px] tracking-widest text-on-surface-variant uppercase font-bold mb-1">Subtotal</span>
+                    <span className="font-display text-2xl text-secondary">
+                      ₹{(extraGuests * 350 + extraKids * 150).toLocaleString()}
+                    </span>
+                    {(extraGuests > 0 || extraKids > 0) && (
+                      <span className="text-[10px] text-secondary font-body font-bold mt-1 uppercase tracking-wider">
+                        ✓ Added
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
+
             {/* Photography */}
             <ScrollReveal className="md:col-span-8" direction="left">
               <div

@@ -33,19 +33,23 @@ export default function Navbar() {
           } ${menuOpen ? 'border-b border-white/10' : 'border-b border-primary/8'}`}
       >
         <div className="flex justify-between items-center h-20 px-6 md:px-8 max-w-[1280px] mx-auto">
-          {/* Logo */}
-          <Link href="/" className={`relative h-16 w-16 md:h-[80px] md:w-[80px] transition-all duration-300 hover:opacity-80 flex items-center justify-center z-[110] ${
-            menuOpen ? 'bg-white/95 rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)]' : ''
-          }`}>
-            <Image
-              src="/hb.png"
-              alt="House of Bash"
-              fill
-              sizes="(max-width: 768px) 128px, 256px"
-              quality={100}
-              priority
-              className="object-contain transition-all duration-300 scale-[1.4] md:scale-[1.5]"
-            />
+          {/* Logo + Wordmark */}
+          <Link href="/" className="flex items-center gap-3 z-[110] hover:opacity-80 transition-all duration-300">
+            <div className="relative h-10 w-10 md:h-12 md:w-12 shrink-0">
+              <Image
+                src="/hb_logo.svg"
+                alt="House of Bash"
+                fill
+                sizes="(max-width: 768px) 48px, 64px"
+                priority
+                className="object-contain transition-all duration-300"
+              />
+            </div>
+            <span className={`font-display text-[13px] md:text-[15px] tracking-[0.2em] font-bold uppercase leading-tight transition-colors duration-300 ${
+              menuOpen ? 'text-white' : 'text-primary'
+            }`}>
+              House of Bash
+            </span>
           </Link>
 
           {/* Desktop Nav */}

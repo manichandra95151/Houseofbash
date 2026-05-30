@@ -32,6 +32,10 @@ interface CartContextType {
   clearCart: () => void
   selectedSlot: Slot | null
   setSelectedSlot: (slot: Slot) => void
+  extraGuests: number
+  setExtraGuests: (count: number) => void
+  extraKids: number
+  setExtraKids: (count: number) => void
 }
 
 const CartContext = createContext<CartContextType | null>(null)
@@ -39,27 +43,63 @@ const CartContext = createContext<CartContextType | null>(null)
 const BASE_PRICE = 2500
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([])
+  const [rawItems, setRawItems] = useState<CartItem[]>([])
   const [selectedSlot, setSelectedSlot] = useState<Slot | null>(AVAILABLE_SLOTS[1])
- 
+  const [extraGuests, setExtraGuests] = useState(0)
+  const [extraKids, setExtraKids] = useState(0)
+
+  const getExtraPersonsItem = (): CartItem | null => {
+    const price = extraGuests * 350 + extraKids * 150
+    if (price === 0) return null
+
+    let name = 'Extra Persons'
+    if (extraGuests > 0 && extraKids > 0) {
+      name = `Extra Persons (${extraGuests} Guests (Age 5+), ${extraKids} Kids under 5)`
+    } else if (extraGuests > 0) {
+      name = `Extra Persons (${extraGuests} Guests (Age 5+))`
+    } else if (extraKids > 0) {
+      name = `Extra Persons (${extraKids} Kids under 5)`
+    }
+
+    return { name, price }
+  }
+
+  const extraItem = getExtraPersonsItem()
+  const items = extraItem ? [extraItem, ...rawItems] : rawItems
 
   const addItem = (item: CartItem) => {
-    setItems((prev) => (prev.some((i) => i.name === item.name) ? prev : [...prev, item]))
+    if (item.name.startsWith('Extra Persons')) return
+    setRawItems((prev) => (prev.some((i) => i.name === item.name) ? prev : [...prev, item]))
   }
 
   const removeItem = (name: string) => {
-    setItems((prev) => prev.filter((i) => i.name !== name))
+    if (name.startsWith('Extra Persons')) {
+      setExtraGuests(0)
+      setExtraKids(0)
+      return
+    }
+    setRawItems((prev) => prev.filter((i) => i.name !== name))
   }
 
   const toggleItem = (item: CartItem) => {
-    setItems((prev) =>
+    if (item.name.startsWith('Extra Persons')) {
+      setExtraGuests(0)
+      setExtraKids(0)
+      return
+    }
+    setRawItems((prev) =>
       prev.some((i) => i.name === item.name)
         ? prev.filter((i) => i.name !== item.name)
         : [...prev, item]
     )
   }
 
-  const isSelected = (name: string) => items.some((i) => i.name === name)
+  const isSelected = (name: string) => {
+    if (name === 'Extra Persons') {
+      return extraGuests > 0 || extraKids > 0
+    }
+    return rawItems.some((i) => i.name === name)
+  }
 
   const getBasePrice = (slot: Slot | null) => {
     if (!slot) return BASE_PRICE
@@ -72,10 +112,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const basePrice = getBasePrice(selectedSlot)
   const total = basePrice + items.reduce((sum, i) => sum + i.price, 0)
 
-  const clearCart = () => setItems([])
+  const clearCart = () => {
+    setRawItems([])
+    setExtraGuests(0)
+    setExtraKids(0)
+  }
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, toggleItem, isSelected, total, basePrice, clearCart, selectedSlot, setSelectedSlot }}>
+    <CartContext.Provider value={{ items, addItem, removeItem, toggleItem, isSelected, total, basePrice, clearCart, selectedSlot, setSelectedSlot, extraGuests, setExtraGuests, extraKids, setExtraKids }}>
       {children}
     </CartContext.Provider>
   )
