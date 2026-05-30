@@ -174,14 +174,14 @@ export default function AddonsPage() {
                     Extra Guests & Kids
                   </h3>
                   <p className="text-on-surface-variant max-w-xl font-body text-sm leading-relaxed">
-                    The base package includes up to 5 guests. Add more guests below. Guests (Age 5+) are charged at <strong>₹350/head</strong> and kids (under 5 years) at <strong>₹150/head</strong>.
+                    The base package includes up to 5 guests. Add more guests below. Guests (Age 10+) are charged at <strong>₹350/head</strong> and kids (above 5 years) at <strong>₹150/head</strong>.
                   </p>
                 </div>
                 
                 <div className="flex flex-col sm:flex-row items-center gap-8 w-full md:w-auto">
                   {/* Extra Guests Counter */}
                   <div className="flex flex-col items-center p-4 bg-primary/5 border border-primary/5 min-w-[140px] w-full sm:w-auto">
-                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Guests (Age 5+)</span>
+                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Guests (Age 10+)</span>
                     <div className="flex items-center gap-4">
                       <button 
                         onClick={() => setExtraGuests(Math.max(0, extraGuests - 1))}
@@ -202,7 +202,7 @@ export default function AddonsPage() {
 
                   {/* Kids Counter */}
                   <div className="flex flex-col items-center p-4 bg-primary/5 border border-primary/5 min-w-[140px] w-full sm:w-auto">
-                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Kids (Under 5)</span>
+                    <span className="font-body text-[10px] tracking-wider text-on-surface-variant font-bold mb-2 uppercase">Kids (Above 5)</span>
                     <div className="flex items-center gap-4">
                       <button 
                         onClick={() => setExtraKids(Math.max(0, extraKids - 1))}

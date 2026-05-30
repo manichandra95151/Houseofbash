@@ -54,11 +54,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     let name = 'Extra Persons'
     if (extraGuests > 0 && extraKids > 0) {
-      name = `Extra Persons (${extraGuests} Guests (Age 5+), ${extraKids} Kids under 5)`
+      name = `Extra Persons (${extraGuests} Guests (Age 10+), ${extraKids} Kids above 5)`
     } else if (extraGuests > 0) {
-      name = `Extra Persons (${extraGuests} Guests (Age 5+))`
+      name = `Extra Persons (${extraGuests} Guests (Age 10+))`
     } else if (extraKids > 0) {
-      name = `Extra Persons (${extraKids} Kids under 5)`
+      name = `Extra Persons (${extraKids} Kids above 5)`
     }
 
     return { name, price }
